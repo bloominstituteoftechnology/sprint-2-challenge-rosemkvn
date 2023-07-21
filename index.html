@@ -73,7 +73,32 @@
     // ❗ Debug properly using the Console
 
     // 👉 CHALLENGE 1
-    function profileActivation() {
+    profile={}
+    reason=''
+    function profileActivation(profile, reason) {
+  
+      if (!profile.hasOwnProperty('active')) {
+    return "impossible to ascertain status"
+  }
+
+  if (profile.active) {
+    if (profile.hasOwnProperty('reason')) {
+      return "confirm status manually"
+    } else {
+      profile.active = false
+      profile.reason = reason
+      return profile
+    }
+  } else {
+    if (!profile.hasOwnProperty('reason')) {
+      return "confirm status manually"
+    } else {
+      delete profile.reason
+      profile.active = true
+      return profile
+    }
+  
+}
       // 🧠 profileActivation takes two arguments, profile and reason, which are an object and a string respectively
       //  The reason arg is only used -and therefore required- to deactivate profiles, not to activate them
       //  The profile arg has an `active` property holding a Boolean value
@@ -89,6 +114,7 @@
 
     // 👉 CHALLENGE 2
     function mineSweeper() {
+      
       // 🧠 mineSweeper takes a grid as its first argument, and coordinates x and y as the second and third args
       //  The grid is an array of arrays in the following format: [["🟥","🟦","🟥"],["🟦","🟥","🟥"],["🟥","🟦","🟦"]]
       //  Each subarray is a row of the grid, the first subarray being the top row:
